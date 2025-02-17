@@ -1,1 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício do Alien</title>
+    <script src="https://cdn.jsdelivr.net/npm/phaser@3.55.2/dist/phaser.min.js"></script>
+    <style> body { display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; } </style>
+</head>
 
+<body>
+    <script>
+        const larguraJogo = 700; //define a largura do jogo
+        const alturaJogo = 850; //define a altura do jogo
+
+        const config = {
+            type: Phaser.AUTO,   //configuração do phaser
+            width: larguraJogo,
+            height: alturaJogo,
+            physics: {
+                default: 'arcade',
+                arcade: {
+                    gravity: { y: 300 },
+                    debug: true
+                }
+            },
+            scene: {
+                preload: preload,
+                create: create,
+                update: update
+            }
+        };
+
+        const game = new Phaser.Game(config);  //chama o phaser
+
+        var alien;
+        var teclado;
+        var fogo;
+        var plataforma;     //criar variaveis
+        var moeda;
+        var pontuacao = 0;
+        var placar;
+        var vaca;
+
+        function preload() {  //carrega os objetos(imagens)
+            this.load.image('background', 'assets/bg.png');
+            this.load.image('player', 'assets/alienigena.png');
+            this.load.image('turbo_nave', 'assets/turbo.png');
+            this.load.image('plataforma_tijolo', 'assets/tijolos.png');
+            this.load.image('moeda', 'assets/moeda.png');
+            this.load.image('vaca', 'assets/vaca.png');
+        }
+
+        function create() {  //cria os objetos(imagens)
+        this.add.image(larguraJogo / 2, alturaJogo / 2, 'background');
+
+        fogo = this.add.sprite(0, 0, 'turbo_nave');
+        fogo.setVisible(false);
+
+        alien = this.physics.add.sprite(larguraJogo / 2, 0, 'player');
+        alien.setCollideWorldBounds(true);  //pra não ultrapassar os limites da tela
+        teclado = this.input.keyboard.createCursorKeys(); //pra poder usar o teclado
+
+        plataforma = this.physics.add.staticImage(larguraJogo / 2, alturaJogo - 400, 'plataforma_tijolo');
+        this.physics.add.collider(alien, plataforma); //cria colisão da plataforma com o alien
+
+        // Lista de vacas
+        let vacas = []; //variavel de vacas
+
+    // Criar duas vacas usando um array
+    let posicoesVacas = [
+        { x: larguraJogo - 500, y: alturaJogo - 140 }, //posição da vaca 1
+        { x: larguraJogo - 200, y: alturaJogo - 140 } //posição da vaca 2
+    ];
+
+    posicoesVacas.forEach(posicao => {
+        let vaca = this.physics.add.sprite(posicao.x, posicao.y, 'vaca');
+        vaca.setScale(0.2);
+        vaca.setImmovable(true);
+        vaca.setCollideWorldBounds(true);
+        vaca.setOrigin(0.5, 0.5);                //configuração de tamanho, colisão, sprite
+        vaca.body.setOffset(-10, -20);
+        vaca.body.setSize(vaca.width * 0.8, vaca.height * 0.8);
+        vaca.setVelocity(0, 0);
+        vaca.body.allowGravity = false;
+
+        this.physics.add.collider(alien, vaca);
+        vacas.push(vaca); // Adiciona a vaca na lista
+    });
+
+        moeda = this.physics.add.sprite(Phaser.Math.RND.between(50, larguraJogo - 50), Phaser.Math.RND.between(50, alturaJogo - 50), 'moeda');
+        moeda.setCollideWorldBounds(true);
+        moeda.setBounce(0.7);      //add moeda e define limite de tela
+
+        placar = this.add.text(50, 50, 'Moedas:' + pontuacao, { fontSize: '45px', fill: '#495613' }); //aumenta pontuação toda vez que pegar moeda é a config do texto que vai aparecer
+
+    this.physics.add.overlap(alien, moeda, () => {
+        moeda.setVisible(false);
+        moeda.setPosition(Phaser.Math.RND.between(50, larguraJogo - 50), Phaser.Math.RND.between(50, alturaJogo - 50));
+        pontuacao += 1;
+        placar.setText('Moedas: ' + pontuacao);  //conf pra aumentar a pontuação toda vez q o player pegar a moeda
+        moeda.setVisible(true);
+    });
+    }
+
+        //configuração pra poder usar as setas do teclado pra controlar o alien
+        function update() {
+            if (teclado.left.isDown) {
+                alien.setVelocityX(-300);
+            } else if (teclado.right.isDown) {
+                alien.setVelocityX(300);
+            } else {
+                alien.setVelocityX(0);
+            }
+
+            if (teclado.up.isDown) {
+                alien.setVelocityY(-300);
+                ativarTurbo();
+            } else {
+                semTurbo();
+            }
+
+            fogo.setPosition(alien.x, alien.y + alien.height / 2);
+        }
+
+
+        //ativar o turbo(fogo)
+        function ativarTurbo() {
+            fogo.setVisible(true);
+        }
+        
+        //não ativar turbo
+        function semTurbo() {
+            fogo.setVisible(false);
+        }
+    </script>
+</body>
+</html>
