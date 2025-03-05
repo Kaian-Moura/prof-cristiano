@@ -1,1 +1,37 @@
+#input-form {
+    padding: 15px;
+    max-width: 270px;
+    overflow: visible;
+    position: auto;
+}
 
+#input-form input{
+    padding: 10px;
+    font-size: 1.2rem;
+    width: 250px;
+    border-style: none;
+    background-color: #ff6f91; /* Pink background */
+    color: #ffffff;
+    overflow: visible;
+}
+
+::placeholder {
+    color: #ffb3c1; /* Light pink placeholder */
+}
+
+textarea:focus, input:focus{
+    outline: none;
+}
+
+.webflow-style-input::after{
+    content: "";
+    position: absolute;
+    left: 15px;
+    bottom: 15px;
+    right: 0px;
+    height: 2px;
+    background: linear-gradient(to right, #ff6f91, #ff0000, #ffb3c1, #ff6f91, #ff0000, #ffb3c1);
+    background-size: 200% auto;
+    animation: gradient 3s linear infinite;
+    width: 300px;
+}
