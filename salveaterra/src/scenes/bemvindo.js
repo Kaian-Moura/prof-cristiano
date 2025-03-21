@@ -33,22 +33,22 @@ class Bemvindo extends Phaser.Scene {
         this.returnKey = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ENTER); // Tecla Enter
         this.nameFilled = false; // Flag que indica se o usuário já inseriu um nome válido
 
-        // Adiciona o logo do jogo na parte superior da tela
+        // Adiciona o logo do jogo no lado esquerdo da tela (ajustado para layout paisagem)
         this.logo = this.add.image(
-            this.game.config.width / 2,     // Centraliza horizontalmente
-            this.game.config.height / 4 - 50, // Posiciona no primeiro quarto superior da tela
+            this.game.config.width / 4,     // Posicionado a 1/4 da largura da tela
+            this.game.config.height / 2,     // Centralizado verticalmente
             'logo'                          // Usa a imagem carregada com chave 'logo'
         ).setOrigin(0.5).setScale(0.5);     // Define o ponto de origem e escala da imagem
 
         // Adiciona o título do jogo abaixo do logo
         this.title = this.add.text(
-            this.game.config.width / 2,     // Centraliza horizontalmente
-            this.game.config.height / 6 + 50, // Posiciona logo abaixo do logo
+            this.game.config.width / 4,     // Alinhado com o logo
+            this.game.config.height / 4,    // Posicionado acima do logo
             "Defensor da terra",            // Texto do título do jogo
             {
                 // Estilização do texto do título
                 color: "#ff6b8b",           // Cor rosa
-                fontSize: "42px",           // Tamanho da fonte
+                fontSize: "38px",           // Tamanho da fonte
                 fontFamily: "Arial",        // Tipo da fonte
                 fontStyle: "bold",          // Estilo negrito
                 // Adiciona sombra ao texto para melhor legibilidade
@@ -61,8 +61,8 @@ class Bemvindo extends Phaser.Scene {
         // Configuração do texto de boas-vindas que será atualizado com o nome do jogador
         var text = { height: 20, padding: 15, content: "Seja bem vindo(a) --" }
         this.message = this.add.text(
-            this.game.config.width / 2,     // Centraliza horizontalmente
-            this.game.config.height / 2 - text.padding * 2 - text.height, // Posição vertical
+            this.game.config.width * 0.6,     // No lado direito da tela
+            this.game.config.height / 3,      // Posição vertical
             text.content,                   // Texto inicial
             {
                 // Estilização similar ao título
@@ -84,10 +84,10 @@ class Bemvindo extends Phaser.Scene {
         var inputSize = { width: 270, height: 42, padding: 15 };
         var inputButton = { width: 30, height: 12 };
         
-        // Calcula a posição do campo de entrada para centralizá-lo na tela
+        // Calcula a posição do campo de entrada para centralizá-lo no lado direito
         var inputCoords = {
-            xposition: (this.game.config.width - inputSize.width) / 2 - inputButton.width,
-            yposition: (this.game.config.height - inputSize.height - inputSize.padding * 2) / 2,
+            xposition: this.game.config.width * 0.6 - inputSize.width / 2,
+            yposition: this.game.config.height / 2 - inputSize.height / 2,
         };
         
         // Adiciona o formulário HTML para entrada de texto
@@ -127,8 +127,8 @@ class Bemvindo extends Phaser.Scene {
 
         // Cria o botão de início do jogo (inicialmente invisível)
         this.playBt = this.add.image(
-            this.game.config.width / 2,     // Centralizado horizontalmente
-            this.game.config.height / 4 * 3, // Posicionado no terceiro quarto da tela
+            this.game.config.width * 0.6,    // No lado direito da tela
+            this.game.config.height * 0.7,   // Parte inferior da área de formulário
             'play'                          // Imagem do botão de jogar
         )
         .setScale(0.15)            // Define o tamanho
@@ -227,12 +227,12 @@ class Bemvindo extends Phaser.Scene {
         this.overlay.setDepth(100);          // Fundo abaixo do conteúdo
         this.howToPlayPopUp.setDepth(101);   // Conteúdo acima do fundo
         
-        // Cria o painel de fundo do pop-up
+        // Cria o painel de fundo do pop-up (mais largo para modo paisagem)
         const popUpBg = this.add.rectangle(
             0,                              // Centralizado no container (x)
             0,                              // Centralizado no container (y)
-            this.game.config.width - 80,    // Largura um pouco menor que a tela
-            300,                            // Altura fixa
+            this.game.config.width - 200,   // Largura um pouco menor que a tela
+            250,                            // Altura reduzida para formato landscape
             0x000000,                       // Cor preta
             0.8                             // 80% de opacidade
         );
@@ -242,7 +242,7 @@ class Bemvindo extends Phaser.Scene {
         // Adiciona o título do pop-up
         const popUpTitle = this.add.text(
             0,                   // Centralizado horizontalmente no container
-            -120,                // Posicionado na parte superior do pop-up
+            -100,                // Posicionado na parte superior do pop-up
             "Como Jogar",        // Texto do título
             {
                 // Estilização do título
@@ -271,7 +271,7 @@ class Bemvindo extends Phaser.Scene {
             instructionTexts.push(
                 this.add.text(
                     -popUpBg.width / 2 + 20,  // Alinhado à esquerda com margem
-                    -80 + (index * 30),        // Cada linha posicionada abaixo da anterior
+                    -65 + (index * 30),        // Cada linha posicionada abaixo da anterior (ajustado para menor altura)
                     instruction,               // Texto da instrução
                     {
                         // Estilização do texto
@@ -286,7 +286,7 @@ class Bemvindo extends Phaser.Scene {
         // Cria o botão para fechar o pop-up
         const closeButton = this.add.text(
             0,                   // Centralizado horizontalmente
-            100,                 // Posicionado na parte inferior do pop-up
+            85,                 // Posicionado na parte inferior do pop-up (ajustado para altura menor)
             "Fechar",            // Texto do botão
             {
                 // Estilização do botão

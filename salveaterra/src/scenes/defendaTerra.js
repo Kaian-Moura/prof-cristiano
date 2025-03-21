@@ -54,7 +54,7 @@ class DefendaTerra extends Phaser.Scene {
         // 5) POWER-UPS
         this.powerUps = {
             interval: 5000,
-            duration: 12000, // Alterado de 20000 para 12000 (12 segundos)
+            duration: 12000,
             group: null,
             size: 0.3
         };
@@ -75,12 +75,20 @@ class DefendaTerra extends Phaser.Scene {
     create() {
         // 1) Adiciona a imagem de fundo
         this.bg.obj = this.add.image(this.bg.x, this.bg.y, 'bg').setOrigin(0, 0);
+        // Redimensionar o fundo para cobrir toda a área do jogo
+        this.bg.obj.displayWidth = this.game.config.width;
+        this.bg.obj.displayHeight = this.game.config.height;
 
-        // 2) Adiciona jogador e suas propriedades físicas
-        this.player.obj = this.physics.add.sprite(this.game.config.width / 2, this.game.config.height - 50, 'player').setScale(0.3);
+        // 2) Adiciona jogador e suas propriedades físicas - agora na parte inferior central
+        this.player.obj = this.physics.add.sprite(
+            this.game.config.width / 2, 
+            this.game.config.height - 50, 
+            'player'
+        ).setScale(0.3);
+        
         this.player.obj.setCollideWorldBounds(true);
-        this.player.obj.body.allowGravity = false; // Desativar a gravidade para o jogador
-        this.player.obj.body.setSize(this.player.obj.width, this.player.obj.height, true); // Ajustar a área de colisão
+        this.player.obj.body.allowGravity = false;
+        this.player.obj.body.setSize(this.player.obj.width, this.player.obj.height, true);
     
         // 3) Adiciona grupo de pedras
         this.stones.group = this.physics.add.group({
@@ -103,22 +111,35 @@ class DefendaTerra extends Phaser.Scene {
         // 7) Adiciona os cursores que movimentarão o jogador
         this.cursors = this.input.keyboard.createCursorKeys();
 
-        // 8) Mostra o placar, vidas e contagem de power-up
-        this.scoreText = this.add.text(15, 15, this.game.name + ': 0', { fontSize: '20px', fill: '#ff6b8b', stroke: '#000', strokeThickness: 2 });
-        this.livesText = this.add.text(15, 45, 'Vidas: ' + this.player.lives, { fontSize: '20px', fill: '#ff6b8b', stroke: '#000', strokeThickness: 2 });
-        this.powerUpText = this.add.text(15, 75, '', { fontSize: '20px', fill: '#ff6b8b', stroke: '#000', strokeThickness: 2 });
-        this.highScoreText = this.add.text(0, 15, 'high score: ' + this.game.highScore, { fontSize: '20px', fill: '#ff6b8b', stroke: '#000', strokeThickness: 2, align: 'right' });
+        // 8) Mostra o placar, vidas e contagem de power-up - reposicionados para layout landscape
+        this.scoreText = this.add.text(15, 15, this.game.name + ': 0', 
+            { fontSize: '20px', fill: '#ff6b8b', stroke: '#000', strokeThickness: 2 });
+        
+        this.livesText = this.add.text(15, 45, 'Vidas: ' + this.player.lives, 
+            { fontSize: '20px', fill: '#ff6b8b', stroke: '#000', strokeThickness: 2 });
+        
+        this.powerUpText = this.add.text(15, 75, '', 
+            { fontSize: '20px', fill: '#ff6b8b', stroke: '#000', strokeThickness: 2 });
+        
+        this.highScoreText = this.add.text(0, 15, 'high score: ' + this.game.highScore, 
+            { fontSize: '20px', fill: '#ff6b8b', stroke: '#000', strokeThickness: 2, align: 'right' });
+        
         this.highScoreText.x = this.game.config.width - this.highScoreText.width - 15;
-        this.gameControls.restartBt = this.add.image(this.game.config.width / 2 - 50, this.game.config.height / 4 * 3,
-            'restart').setScale(0.3).setOrigin(0, 0).setInteractive().setVisible(false);
+        
+        // Reposicionar o botão de reiniciar para o centro da tela
+        this.gameControls.restartBt = this.add.image(
+            this.game.config.width / 2, 
+            this.game.config.height / 2 + 100,
+            'restart'
+        ).setScale(0.3).setOrigin(0.5).setInteractive().setVisible(false);
 
         // 9) Adiciona evento de clique no botão de "reiniciar"
         this.gameControls.restartBt.on('pointerdown', function () {
             if (this.gameControls.over) {
                 this.gameControls.over = false;
                 this.gameControls.score = 0;
-                this.player.lives = 2; // Resetando as vidas do jogador
-                this.stones.speed = 200; // Resetando a velocidade das pedras
+                this.player.lives = 2;
+                this.stones.speed = 200;
                 this.scene.restart();
             }
         }, this);
@@ -139,7 +160,7 @@ class DefendaTerra extends Phaser.Scene {
             return;
         }
 
-        // Inclui controle de movimentação do jogador
+        // Inclui controle de movimentação do jogador (agora só lateral)
         if (this.cursors.left.isDown) {
             this.player.obj.setVelocityX(-this.player.speed);
         } else if (this.cursors.right.isDown) {
@@ -165,107 +186,52 @@ class DefendaTerra extends Phaser.Scene {
         }
 
         // Verifica se é hora de criar um novo power-up
-        // Verificamos se a pontuação é um múltiplo de 25
         if (this.gameControls.score % 25 === 0 && this.gameControls.score !== this.gameControls.lastPowerUpScore) {
             this.gameControls.lastPowerUpScore = this.gameControls.score;
             this.dropPowerUp();
         }
     }
 
-    // Função chamada quando o jogador pega uma pedra
-    catchStone(player, stone) {
-        if (stone.active) {
-            stone.destroy();
-            this.gameControls.score++;
-            this.scoreText.setText(this.game.name + ': ' + this.gameControls.score);
-
-            // Registra informação sobre a pedra coletada na lista
-            this.gameControls.collectedStones.push({
-                x: stone.x,
-                y: stone.y,
-                time: new Date().getTime()
-            });
-
-            // Aumenta a velocidade das pedras a cada 10 pontos
-            if (this.gameControls.score % 10 === 0) {
-                this.stones.speed += 50;
-            }
-        }
-    }
-
-    // Função chamada quando o jogador perde uma vida
-    missStone() {
-        this.player.lives--;
-        this.livesText.setText('Vidas: ' + this.player.lives);
-        if (this.player.lives <= 0) {
-            this.gameOver();
-        }
-    }
-
-    // Função para criar uma nova pedra
+    // Função para criar uma nova pedra - ajustada para tela mais larga
     dropStone() {
-        // Reduzindo a área de queda para 84% da largura (8% a 92%)
-        const x = Phaser.Math.Between(this.game.config.width * 0.08, this.game.config.width * 0.92);
+        // Ajustando a área de queda para a largura da tela landscape
+        const x = Phaser.Math.Between(this.game.config.width * 0.05, this.game.config.width * 0.95);
         const stone = this.stones.group.get(x, 0);
         if (stone) {
             stone.setActive(true);
             stone.setVisible(true);
-            stone.setScale(this.stones.size); // Aplicando o tamanho reduzido
+            stone.setScale(this.stones.size);
             stone.body.setVelocityY(this.stones.speed);
         }
     }
 
-    // Função para criar um novo power-up
+    // Função para criar um novo power-up - ajustada para tela mais larga
     dropPowerUp() {
-        // Reduzindo a área de queda para 84% da largura (8% a 92%)
-        const x = Phaser.Math.Between(this.game.config.width * 0.08, this.game.config.width * 0.92);
+        const x = Phaser.Math.Between(this.game.config.width * 0.05, this.game.config.width * 0.95);
         const powerUp = this.powerUps.group.get(x, 0);
         if (powerUp) {
             powerUp.setActive(true);
             powerUp.setVisible(true);
-            powerUp.setScale(this.powerUps.size); // Aplicando o tamanho reduzido
+            powerUp.setScale(this.powerUps.size);
             powerUp.body.setVelocityY(this.stones.speed);
         }
     }
 
-    // Função chamada quando o jogador pega um power-up
-    catchPowerUp(player, powerUp) {
-        if (powerUp.active) {
-            powerUp.destroy();
-            this.activatePowerUp();
-        }
-    }
-
-    // Função para ativar o power-up
-    activatePowerUp() {
-        this.player.powerUpActive = true;
-        this.player.speed = this.player.powerUpSpeed;
-        this.player.obj.setTexture('playerPowerUp');
-        this.player.obj.body.setSize(this.player.obj.width, this.player.obj.height, true); // Ajustar a área de colisão
-
-        // Desativa o power-up após a duração
-        this.player.powerUpTimer = this.time.addEvent({
-            delay: this.powerUps.duration,
-            callback: this.deactivatePowerUp,
-            callbackScope: this
-        });
-    }
-
-    // Função para desativar o power-up
-    deactivatePowerUp() {
-        this.player.powerUpActive = false;
-        this.player.speed = 300;
-        this.player.obj.setTexture('player');
-        this.player.obj.body.setSize(this.player.obj.width, this.player.obj.height, true); // Ajustar a área de colisão
-    }
-
-    // Função chamada quando o jogo acaba
+    // Função chamada quando o jogo acaba - ajustada para layout landscape
     gameOver() {
         this.physics.pause();
-        this.stoneTimer.remove(false); // Parar a geração de pedras
+        this.stoneTimer.remove(false);
         this.gameControls.over = true;
-        this.add.image(this.game.config.width / 2, this.game.config.height / 2, 'gameOver').setScale(0.1);
+        
+        // Centraliza a imagem de game over
+        const gameOverImg = this.add.image(
+            this.game.config.width / 2, 
+            this.game.config.height / 2 - 50, 
+            'gameOver'
+        ).setScale(0.1);
+        
         this.gameControls.restartBt.visible = true;
+        
         if (this.gameControls.score > this.game.highScore) {
             this.game.highScore = this.gameControls.score;
             this.highScoreText.setText('high score: ' + this.game.highScore);
@@ -275,15 +241,68 @@ class DefendaTerra extends Phaser.Scene {
         let totalTimeCollecting = 0;
         for (let i = 0; i < this.gameControls.collectedStones.length; i++) {
             const stone = this.gameControls.collectedStones[i];
-            // Aqui poderíamos fazer alguma análise com os dados coletados
             if (i > 0) {
                 const prevStone = this.gameControls.collectedStones[i-1];
                 totalTimeCollecting += (stone.time - prevStone.time);
             }
         }
-        // Este cálculo poderia ser usado para estatísticas do jogo
+        
         console.log("Tempo médio entre capturas: " + 
                    (this.gameControls.collectedStones.length > 1 ? 
                     totalTimeCollecting / (this.gameControls.collectedStones.length - 1) : 0) + "ms");
+    }
+
+    // Restantes métodos permanecem sem alterações
+    catchStone(player, stone) {
+        if (stone.active) {
+            stone.destroy();
+            this.gameControls.score++;
+            this.scoreText.setText(this.game.name + ': ' + this.gameControls.score);
+
+            this.gameControls.collectedStones.push({
+                x: stone.x,
+                y: stone.y,
+                time: new Date().getTime()
+            });
+
+            if (this.gameControls.score % 10 === 0) {
+                this.stones.speed += 50;
+            }
+        }
+    }
+
+    missStone() {
+        this.player.lives--;
+        this.livesText.setText('Vidas: ' + this.player.lives);
+        if (this.player.lives <= 0) {
+            this.gameOver();
+        }
+    }
+
+    catchPowerUp(player, powerUp) {
+        if (powerUp.active) {
+            powerUp.destroy();
+            this.activatePowerUp();
+        }
+    }
+
+    activatePowerUp() {
+        this.player.powerUpActive = true;
+        this.player.speed = this.player.powerUpSpeed;
+        this.player.obj.setTexture('playerPowerUp');
+        this.player.obj.body.setSize(this.player.obj.width, this.player.obj.height, true);
+
+        this.player.powerUpTimer = this.time.addEvent({
+            delay: this.powerUps.duration,
+            callback: this.deactivatePowerUp,
+            callbackScope: this
+        });
+    }
+
+    deactivatePowerUp() {
+        this.player.powerUpActive = false;
+        this.player.speed = 300;
+        this.player.obj.setTexture('player');
+        this.player.obj.body.setSize(this.player.obj.width, this.player.obj.height, true);
     }
 }
