@@ -1,3 +1,6 @@
+NOME: KAIAN SANTOS MOURA
+TURMA: 19
+
 # Instruções
 
 - Faça uma cópia deste arquivo .md para um repositório próprio
@@ -41,13 +44,13 @@ console.log("O produto dos valores é:", produto);
 ```
 Qual das seguintes alternativas melhor descreve o que o código faz?
 
-A) O código avalia a expressão booleana, imprime `true`, calcula o produto dos números na lista e imprime o resultado no console.
+A) O código avalia a expressão booleana, imprime `true`, calcula o produto dos números na lista e imprime o resultado no console. <---- CORRETA!
 
-B) O código avalia a expressão booleana, imprime `false`, calcula o produto dos números na lista e imprime o resultado no console.
+B) O código avalia a expressão booleana, imprime `false`, calcula o produto dos números na lista e imprime o resultado no console. (ERRADA)
 
-C) O código avalia a expressão booleana, imprime `true` e, em seguida, verifica se o número 6 está na lista.
+C) O código avalia a expressão booleana, imprime `true` e, em seguida, verifica se o número 6 está na lista. (ERRADA)
 
-D) O código avalia a expressão booleana, imprime `false` e ordena os valores em ordem crescente.
+D) O código avalia a expressão booleana, imprime `false` e ordena os valores em ordem crescente. (ERRADA)
 
 
 ______
@@ -103,13 +106,13 @@ function analisarCredito2() {
 ```
 Se ambas as funções forem executadas com os valores fornecidos, qual será a saída exibida no console?
 
-A) Ambas as funções exibirão: 'Seu crédito foi aprovado. Saldo disponível: 400.'
+A) Ambas as funções exibirão: 'Seu crédito foi aprovado. Saldo disponível: 400.' <---- CORRETAAA!!!!
 
-B) analisarCredito1() exibirá: 'Seu crédito foi negado. Saldo disponível: -600.', enquanto analisarCredito2() exibirá: 'Seu crédito foi negado. Saldo disponível: -200.'
+B) analisarCredito1() exibirá: 'Seu crédito foi negado. Saldo disponível: -600.', enquanto analisarCredito2() exibirá: 'Seu crédito foi negado. Saldo disponível: -200.' -ERRADA-
 
-C) analisarCredito1() exibirá: 'Seu crédito foi negado. Saldo disponível: -200.', enquanto analisarCredito2() exibirá: 'Seu crédito foi aprovado. Saldo disponível: 100.'
+C) analisarCredito1() exibirá: 'Seu crédito foi negado. Saldo disponível: -200.', enquanto analisarCredito2() exibirá: 'Seu crédito foi aprovado. Saldo disponível: 100.' -ERRADA-
 
-D) Ambas as funções exibirão: 'Seu crédito foi aprovado Saldo disponível: 500.'
+D) Ambas as funções exibirão: 'Seu crédito foi aprovado Saldo disponível: 500.' -ERRADA-
 ______
 
 **3)** Considere o seguinte trecho de código em JavaScript:
@@ -127,13 +130,13 @@ if (idade >= 18 && idade < 60) {
 ```
 Qual das seguintes alternativas melhor descreve o comportamento do código?
 
-A) O código verifica se a idade indica um adulto ou um idoso e exibe a mensagem correspondente.
+A) O código verifica se a idade indica um adulto ou um idoso e exibe a mensagem correspondente. <ERRADO
 
-B) O código verifica se a idade pertence à faixa adulta. Se for, exibe "Você é um adulto!". Caso contrário, verifica se é menor de idade e exibe "Você é menor de idade!". Se nenhuma das condições anteriores for verdadeira, exibe "Você está na melhor idade!".
+B) O código verifica se a idade pertence à faixa adulta. Se for, exibe "Você é um adulto!". Caso contrário, verifica se é menor de idade e exibe "Você é menor de idade!". Se nenhuma das condições anteriores for verdadeira, exibe "Você está na melhor idade!". <------------- CORRETAA!!!
 
-C) O código verifica se a idade está entre 18 e 60 anos e, se for, imprime "Você é um adulto!". Se não estiver nesse intervalo, imprime "Você está na melhor idade!".
+C) O código verifica se a idade está entre 18 e 60 anos e, se for, imprime "Você é um adulto!". Se não estiver nesse intervalo, imprime "Você está na melhor idade!". <- ERRADO!
 
-D) O código verifica se a idade é menor de 18, entre 18 e 60 ou acima de 60, imprimindo uma mensagem específica para cada caso.
+D) O código verifica se a idade é menor de 18, entre 18 e 60 ou acima de 60, imprimindo uma mensagem específica para cada caso. <- ERRADO
 ______
 
 **4)** Qual será o resultado impresso no console após a execução do seguinte código?
@@ -161,7 +164,7 @@ for (var i = 0; i < consumoDispositivos.length; i++) {
 
 Escolha a opção que responde corretamente:
 
-A)
+A) -- ERRADO
 Dispositivo 1 ligado. Energia restante: 900
 
 Dispositivo 2 ligado com bateria extra. Energia restante: 700
@@ -172,7 +175,7 @@ Dispositivo 4 ligado com bateria extra. Energia restante: 0
 
 Dispositivo 5 ligado. Energia restante: -200
 
-B)
+B) - ERRADO
 Dispositivo 1 ligado. Energia restante: 900
 
 Dispositivo 2 ligado com bateria extra. Energia restante: 700
@@ -183,7 +186,7 @@ Dispositivo 4 não pode ser ligado. Energia insuficiente.
 
 Dispositivo 5 não pode ser ligado. Energia insuficiente.
 
-C)
+C) -- ERRADO
 Dispositivo 1 ligado. Energia restante: 900
 
 Dispositivo 2 ligado com bateria extra. Energia restante: 700
@@ -192,7 +195,7 @@ Dispositivo 3 ligado. Energia restante: 400
 
 Dispositivo 4 não pode ser ligado. Energia insuficiente.
 
-D)
+D) <------------------------ CORRETA ->>>
 Dispositivo 1 ligado. Energia restante: 900
 
 Dispositivo 2 ligado. Energia restante: 300
@@ -209,26 +212,26 @@ ______
 
 Escolha a opção que melhor descreve seu propósito:
 
-A) O método update() é responsável por carregar os assets do jogo antes da cena ser exibida.
+A) O método update() é responsável por carregar os assets do jogo antes da cena ser exibida. <ERRADO
 
-B) O método update() é chamado continuamente a cada quadro (frame) do jogo, sendo usado para atualizar a lógica, movimentação e interações dos objetos na cena.
+B) O método update() é chamado continuamente a cada quadro (frame) do jogo, sendo usado para atualizar a lógica, movimentação e interações dos objetos na cena. <----- CORRETO!!!
 
-C) O método update() renderiza todos os sprites na tela e garante que a física do jogo seja processada corretamente.
+C) O método update() renderiza todos os sprites na tela e garante que a física do jogo seja processada corretamente. <- ERRADO
 
-D) O método update() é chamado apenas uma vez após a criação da cena, sendo utilizado para configurar variáveis iniciais do jogo.
+D) O método update() é chamado apenas uma vez após a criação da cena, sendo utilizado para configurar variáveis iniciais do jogo. <- ERRADO
 ______
 
 **6)** Qual é o principal objetivo do módulo Matter.js Physics em Phaser.js?
 
 Escolha a opção que responde corretamente:
 
-A) Simular física avançada, incluindo corpos rígidos, colisões complexas e interação entre objetos com gravidade e forças.
+A) Simular física avançada, incluindo corpos rígidos, colisões complexas e interação entre objetos com gravidade e forças. <----- CORRETA (LETRA A)
 
-B) Gerenciar eventos de entrada do usuário, como cliques e toques na tela, permitindo movimentação de personagens.
+B) Gerenciar eventos de entrada do usuário, como cliques e toques na tela, permitindo movimentação de personagens. <ERRADO
 
-C) Renderizar gráficos otimizados para jogos 2D e garantir uma taxa de quadros estável.
+C) Renderizar gráficos otimizados para jogos 2D e garantir uma taxa de quadros estável. <ERRADO
 
-D) Criar animações automáticas para sprites e objetos interativos sem necessidade de programação de movimentação.
+D) Criar animações automáticas para sprites e objetos interativos sem necessidade de programação de movimentação. <ERRADO
 
 ______
 
@@ -245,6 +248,27 @@ Pedidos entre R$50,00 e R$199,99 (inclusive) → "Frete com custo adicional!"
 Pedidos de R$200,00 ou mais → "Frete grátis!"
 ```
 Implemente um pseudocódigo que receba o valor total da compra e exiba a classificação correta do frete para o cliente.
+RESPOSTA:
+
+```javascript
+
+INICIO
+    // Solicita o valor da compra ao usuário
+    ESCREVER "Digite o valor total da compra:"
+    LER valor_compra
+
+    // Verifica a classificação do frete
+    SE valor_compra < 50 ENTAO
+        ESCREVER "Frete não disponível!"
+    SENAO SE valor_compra <= 199.99 ENTAO
+        ESCREVER "Frete com custo adicional!"
+    SENAO
+        ESCREVER "Frete grátis!"
+    FIM SE
+FIM
+
+```
+
 ______
 
 **8)** Considere a implementação da classe base Veiculo em um sistema de modelagem de veículos. Sua tarefa é implementar, utilizando pseudocódigo, as classes derivadas Carro e Moto, que herdam da classe Veiculo, adicionando atributos específicos e métodos para calcular o consumo de combustível de um carro e de uma moto, respectivamente.
@@ -262,6 +286,76 @@ Método CalcularConsumo():
 ```
 Implementação genérica para cálculo de consumo, a ser sobrescrita pelas subclasses.
 Agora, implemente as classes Carro e Moto, garantindo que ambas herdem de Veiculo e possuam métodos específicos para calcular o consumo de combustível com base na quilometragem e eficiência do veículo.
+
+RESPOSTA:
+
+```javascript
+// Classe base Veiculo
+CLASSE Veiculo
+    ATRIBUTOS:
+        modelo
+        ano
+
+    MÉTODO Construtor(modelo, ano)
+        modelo ← modelo
+        ano ← ano
+
+    MÉTODO CalcularConsumo()
+        ESCREVER "Este método deve ser sobrescrito pelas subclasses."
+
+FIM CLASSE
+
+
+// Classe derivada Carro
+CLASSE Carro HERDA Veiculo
+    ATRIBUTOS:
+        eficiencia  // Km por litro
+
+    MÉTODO Construtor(modelo, ano, eficiencia)
+        CHAMAR Construtor(modelo, ano)  // Chama o construtor da classe base
+        eficiencia ← eficiencia
+
+    MÉTODO CalcularConsumo(km)
+        SE eficiencia > 0 ENTAO
+            consumo ← km / eficiencia
+            RETORNAR consumo
+        SENAO
+            ESCREVER "Eficiência inválida!"
+        FIM SE
+
+FIM CLASSE
+
+
+// Classe derivada Moto
+CLASSE Moto HERDA Veiculo
+    ATRIBUTOS:
+        eficiencia  // Km por litro
+
+    MÉTODO Construtor(modelo, ano, eficiencia)
+        CHAMAR Construtor(modelo, ano)  // Chama o construtor da classe base
+        eficiencia ← eficiencia
+
+    MÉTODO CalcularConsumo(km)
+        SE eficiencia > 0 ENTAO
+            consumo ← km / eficiencia
+            RETORNAR consumo
+        SENAO
+            ESCREVER "Eficiência inválida!"
+        FIM SE
+
+FIM CLASSE
+
+
+// Exemplo de uso
+INICIO
+    carro1 ← NOVO Carro("Sedan", 2022, 12)
+    moto1 ← NOVO Moto("Esportiva", 2021, 20)
+
+    ESCREVER "Consumo do carro para 100 km: ", carro1.CalcularConsumo(100), " litros"
+    ESCREVER "Consumo da moto para 100 km: ", moto1.CalcularConsumo(100), " litros"
+FIM
+
+```
 ______
 
 **9)** Você é um cientista da NASA e está ajudando no desenvolvimento de um sistema de pouso para sondas espaciais em Marte. Seu objetivo é calcular o tempo necessário para que a sonda reduza sua velocidade até um nível seguro para pouso, considerando uma velocidade inicial de entrada na atmosfera marciana e uma taxa de desaceleração constante causada pelo atrito atmosférico e retrofoguetes.
@@ -275,6 +369,48 @@ Considere a fórumla de atualização velocidade:
     velocidade = velocidadeInicial - desaceleracao * tempo
 ```
 Seu programa deve determinar quanto tempo será necessário para que a sonda atinja uma velocidade segura de pouso, sem ultrapassar os limites estabelecidos.
+
+RESPOSTA:
+
+```javascript
+INICIO
+    // Entrada de dados
+    ESCREVER "Digite a velocidade inicial da sonda (m/s):"
+    LER velocidadeInicial
+
+    ESCREVER "Digite a taxa de desaceleração (m/s²):"
+    LER desaceleracao
+
+    ESCREVER "Digite a velocidade segura para pouso (m/s):"
+    LER velocidadeSegura
+
+    ESCREVER "Digite o tempo máximo permitido para descida (s):"
+    LER tempoMaximo
+
+    // Inicialização de variáveis
+    tempo ← 0
+
+    // Verifica se a desaceleração é válida
+    SE desaceleracao <= 0 ENTAO
+        ESCREVER "Erro: A desaceleração deve ser maior que zero!"
+        SAIR
+    FIM SE
+
+    // Cálculo do tempo necessário para atingir a velocidade segura
+    tempoNecessario ← (velocidadeInicial - velocidadeSegura) / desaceleracao
+
+    // Validação do tempo dentro dos limites
+    SE tempoNecessario > tempoMaximo ENTAO
+        ESCREVER "Erro: O tempo necessário excede o tempo máximo permitido!"
+    SENAO SE tempoNecessario < 0 ENTAO
+        ESCREVER "Erro: A velocidade inicial já é menor que a velocidade segura!"
+    SENAO
+        ESCREVER "Tempo necessário para pouso seguro: ", tempoNecessario, " segundos."
+    FIM SE
+
+FIM
+
+```
 ______
 
 **10)** Em um sistema de análise financeira, as operações de investimento de uma empresa podem ser representadas por matrizes, onde cada linha representa um tipo de investimento e cada coluna representa um período de tempo.
@@ -298,7 +434,6 @@ Função SomarMatrizesInvestimento(matrizA, matrizB):
 
         Retornar matrizResultado  
 
-# Exemplo de uso da função  
 investimentosAno1 <- [[1000, 2000], [1500, 2500]]  
 investimentosAno2 <- [[1200, 1800], [1300, 2700]]  
 
@@ -307,3 +442,86 @@ Escrever("Total de investimentos acumulados:")
 ImprimirMatriz(totalInvestimentos)  
 ```
 Agora, implemente a função MultiplicarMatrizesInvestimento(matrizA, matrizB), que multiplica as duas matrizes, simulando o efeito de diferentes fatores de crescimento e impacto financeiro nos investimentos ao longo do tempo.
+
+RESPOSTA EM PSEUDOCÓDIO( NÃO TENHO CERTEZA SE ERA PRA SER EM PSEUDOCÓDIGO)
+
+```javascript
+Função MultiplicarMatrizesInvestimento(matrizA, matrizB):  
+    # Obtém as dimensões das matrizes  
+    linhasA <- tamanho(matrizA)  
+    colunasA <- tamanho(matrizA[0])  
+    linhasB <- tamanho(matrizB)  
+    colunasB <- tamanho(matrizB[0])  
+
+    # Verifica se a multiplicação é possível  
+    Se colunasA ≠ linhasB então  
+        Retornar "As matrizes não podem ser multiplicadas. O número de colunas da primeira matriz deve ser igual ao número de linhas da segunda matriz."  
+
+    # Cria a matriz resultado com valores zerados  
+    matrizResultado <- novaMatriz(linhasA, colunasB, 0)  
+
+    # Loop para multiplicar as matrizes  
+    Para i de 0 até linhasA-1 faça  
+        Para j de 0 até colunasB-1 faça  
+            Para k de 0 até colunasA-1 faça  
+                matrizResultado[i][j] <- matrizResultado[i][j] + (matrizA[i][k] * matrizB[k][j])  
+
+    Retornar matrizResultado  
+
+investimentosAno1 <- [[1000, 2000], [1500, 2500]]  
+fatoresCrescimento <- [[1.1, 0.9], [1.2, 1.05]]  
+
+impactoInvestimentos <- MultiplicarMatrizesInvestimento(investimentosAno1, fatoresCrescimento)  
+Escrever("Impacto dos investimentos após multiplicação:")  
+ImprimirMatriz(impactoInvestimentos)  
+
+```
+
+Agora, resposta em javascript(pra garantir):
+
+```javascript
+function multiplicarMatrizesInvestimento(matrizA, matrizB) {
+    // Obtém as dimensões das matrizes
+    let linhasA = matrizA.length;
+    let colunasA = matrizA[0].length;
+    let linhasB = matrizB.length;
+    let colunasB = matrizB[0].length;
+
+    // Verifica se a multiplicação é possível
+    if (colunasA !== linhasB) {
+        return "As matrizes não podem ser multiplicadas. O número de colunas da primeira matriz deve ser igual ao número de linhas da segunda matriz.";
+    }
+
+    // Cria a matriz resultado com valores zerados
+    let matrizResultado = Array(linhasA)
+        .fill(0)
+        .map(() => Array(colunasB).fill(0));
+
+    // Loop para multiplicar as matrizes
+    for (let i = 0; i < linhasA; i++) {
+        for (let j = 0; j < colunasB; j++) {
+            for (let k = 0; k < colunasA; k++) {
+                matrizResultado[i][j] += matrizA[i][k] * matrizB[k][j];
+            }
+        }
+    }
+
+    return matrizResultado;
+}
+
+let investimentosAno1 = [
+    [1000, 2000],
+    [1500, 2500]
+];
+
+let fatoresCrescimento = [
+    [1.1, 0.9],
+    [1.2, 1.05]
+];
+
+let impactoInvestimentos = multiplicarMatrizesInvestimento(investimentosAno1, fatoresCrescimento);
+
+console.log("Impacto dos investimentos após multiplicação:");
+console.table(impactoInvestimentos);
+
+```
